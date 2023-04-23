@@ -1,12 +1,11 @@
 <template>
-  <div ref="guList" class="gu-list">
+  <div ref="guList" class="gu-list" @scroll="onScroll()">
     <ul
       ref="virtualList"
       class="gu-virtual-list"
       :style="{
-        height: height + 'px',
+        height: data.length * itemHeight + 'px',
       }"
-      @scroll="onScroll"
     >
       <li
         v-for="(item, idx) in showList"
@@ -16,7 +15,7 @@
         @click="onClick(item)"
         :style="{
           height: itemHeight + 'px',
-          top: startIndex + idx * itemHeight + 'px',
+          top: (startIndex + idx) * itemHeight + 'px',
         }"
       >
         <slot name="content" :item="item">
@@ -32,7 +31,6 @@ export default {
   name: "GuVirtualList",
   data() {
     return {
-      height: 400,
       needShowLength: 10,
       showList: [],
       startIndex: 0,
@@ -76,16 +74,27 @@ export default {
   },
   methods: {
     onScroll() {
-      const scrollTop = this.$refs.guList.scrollTop;
+      const scrollTop = this.$refs.guList.scrollTop || 0;
       this.startIndex = Math.floor(scrollTop / this.itemHeight);
       this.endIndex = Math.floor(this.startIndex + this.needShowLength + 2);
       this.showList = this.data.slice(this.startIndex, this.endIndex);
     },
     init() {
       const { height } = this.$refs.guList.getBoundingClientRect();
-      this.height = height;
       this.needShowLength = Math.floor(height / this.itemHeight);
       this.onScroll();
+    },
+    onClick(e) {
+      this.active = e[this.field.value];
+      this.$emit("click", e);
+    },
+  },
+  watch: {
+    data: {
+      handler() {
+        this.init();
+      },
+      deep: true,
     },
   },
   mounted() {
@@ -107,6 +116,7 @@ export default {
       top: 0;
       left: 0;
       list-style: none;
+      cursor: pointer;
       &.active {
         background: rgba($color: #ccc, $alpha: 0.5);
       }

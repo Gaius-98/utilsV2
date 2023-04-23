@@ -1,11 +1,17 @@
 {
-  "name": "utilsv2",
+  "name": "gaius-utils-v2",
   "version": "0.1.0",
   "private": false,
   "author": {
     "name": "WangGuoshuai",
     "email": "2388838628@qq.com"
   },
+  "keywords": [
+    "utils",
+    "vue2"
+  ],
+  "license": "Apache-2.0",
+  "type": "module",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -16,6 +22,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
+
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.16",
     "@vue/cli-plugin-eslint": "~4.5.16",

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <gu-virtual-list :data="arr" style="height: 400px">
+    <gu-virtual-list :data="arr" style="height: 400px" @click="onClick">
       <template #content="scope">
         <div :class="'list' + scope.item.value">
           {{ scope.item.label + "(" + scope.item.value + ")" }}
@@ -18,6 +18,11 @@ export default {
     return {
       arr: [],
     };
+  },
+  methods: {
+    onClick(e) {
+      console.log(e);
+    },
   },
   mounted() {
     this.arr = new Array(20000).fill(1).map((item, idx) => ({
