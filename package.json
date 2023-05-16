@@ -1,6 +1,6 @@
 {
   "name": "gaius-utils-v2",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "author": {
     "name": "WangGuoshuai",
@@ -16,7 +16,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "package": "vue-cli-service build --target lib packages/index.js"
+    "package": "vue-cli-service build --target lib --name utilsV2 ./packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
