@@ -1,12 +1,12 @@
 {
   "name": "gaius-utils-v2",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "author": {
     "name": "WangGuoshuai",
     "email": "2388838628@qq.com"
   },
-  "main":"./lib/utilsv2.common.js",
+  "main":"./lib/utilsV2.common.js",
   "keywords": [
     "utils",
     "vue2"
