@@ -13,6 +13,7 @@ npm i gaius-utils-v2
   ```
 ## components
   1. [GuVirtualList](./docs/components/GuVirtualList.md)
+  2. [GuDialog](./docs/components/GuDialog.md)
 ## directives
   1. [v-copy](./docs/directions/copy.md)
   2. [v-lazy-img](./docs/directions/lazyImg.md)

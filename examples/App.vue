@@ -8,20 +8,44 @@
         </div>
       </template>
     </gu-virtual-list>
+    <button @click="onOpenModal">打开弹窗</button>
   </div>
 </template>
 
 <script>
+import GuVirtualList from "../packages/components/GuVirtualList.vue";
+import Dialog from "../packages/components/Dialog";
 export default {
   components: {},
   data() {
     return {
       arr: [],
+      dialog: new Dialog({
+        title: "测试",
+        content: GuVirtualList,
+        componentProps: {
+          data: new Array(20000).fill(1).map((item, idx) => ({
+            label: "label" + idx,
+            value: "val" + idx,
+            key: "key" + idx,
+          })),
+          style: {
+            height: "500px",
+          },
+        },
+        cb: (e) => {
+          console.log(e);
+          this.dialog.destroyed();
+        },
+      }),
     };
   },
   methods: {
     onClick(e) {
       console.log(e);
+    },
+    onOpenModal() {
+      this.dialog.create();
     },
   },
   mounted() {

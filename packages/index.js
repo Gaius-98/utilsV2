@@ -1,3 +1,4 @@
+import Dialog from "./components/Dialog";
 let files = require.context("./components", false, /\.vue$/);
 let components = files.keys().reduce((res, modulePath) => {
   let value = files(modulePath).default;
@@ -17,4 +18,6 @@ const install = (app) => {
     app.directive(d.name, d.options);
   });
 };
+
+export { Dialog };
 export default install;
